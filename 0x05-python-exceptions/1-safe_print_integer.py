@@ -1,13 +1,17 @@
 #!/usr/bin/python3
+# 1-safe_print_integer.py
 
 
 def safe_print_integer(value):
-    """
-    prints a list of anything, but only prints the integers
-    Returns the amount of integers printed
+    """Print an integer with "{:d}".format().
+    Args:
+        value (int): The integer to print.
+    Returns:
+        If a TypeError or ValueError occurs - False.
+        Otherwise - True.
     """
     try:
         print("{:d}".format(value))
-        return True
-    except:
-        return False
+        return (True)
+    except (TypeError, ValueError):
+        return (False)
