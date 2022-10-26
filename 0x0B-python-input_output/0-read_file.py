@@ -3,6 +3,7 @@
 reads a test file and prints it to stdout
 """
 
+
 def read_file(filename=""):
     """
     Reads the file
