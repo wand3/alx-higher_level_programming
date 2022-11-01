@@ -100,7 +100,7 @@ class Rectangle(Base):
                                                        self.x, self.y,
                                                        self.width, self.height)
 
-    def update(self, *args):
+    def update(self, *args, **kwargs):
         """public method that assigns an argument to each attribute"""
         if len(args) != 0 and args is not None:
             for i, arg in enumerate(args):
@@ -114,4 +114,16 @@ class Rectangle(Base):
                     self.x = arg
                 elif i == 4:
                     self.y = arg
-        
+
+        elif kwargs is not None and len(kwargs) != 0:
+            for (key, value) in kwargs.items():
+                if key == "id":
+                    self.id = value
+                elif key == "width":
+                    self.width = value
+                elif key == "height":
+                    self.height = value
+                elif key == "x":
+                    self.x = value
+                elif key == "y":
+                    self.y = value
