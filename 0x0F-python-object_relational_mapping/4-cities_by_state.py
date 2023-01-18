@@ -1,0 +1,33 @@
+#!/usr/bin/python3
+"""
+Script that lists all values in the `states` table of `hbtn_0e_0_usa`
+where `name` matches the argument `state name searched`.
+Arguments:
+    mysql username (str)
+    mysql password (str)
+    database name (str)
+    state name searched (str)
+"""
+
+import sys
+import MySQLdb
+
+if __name__ == "__main__":
+    mySQL_u = sys.argv[1]
+    mySQL_p = sys.argv[2]
+    db_name = sys.argv[3]
+
+
+    # By default, it will connect to localhost:3306
+    db = MySQLdb.connect(user=mySQL_u, passwd=mySQL_p, db=db_name)
+    cur = db.cursor()
+
+    cur.execute(
+            'SELECT cities.id, cities.name, states.name FROM cities' +
+            ' INNER JOIN states ON cities.state_id = states.id' +
+            ' ORDER BY cities.id ASC;' )
+    rows = cur.fetchall()
+
+    for row in rows:
+        print(row)
+    db.close()
